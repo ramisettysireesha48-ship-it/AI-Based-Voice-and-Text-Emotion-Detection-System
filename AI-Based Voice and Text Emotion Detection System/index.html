@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Emotion Detection System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+
+        <div class="logo">
+            <span class="logo-icon">AI</span>
+            <span>Emotion<span class="highlight">Sense</span></span>
+        </div>
+
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#analyzer">Analyzer</a>
+            <a href="#features">Features</a>
+            <a href="#about">About</a>
+        </div>
+
+    </nav>
+
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                ✨ AI-Powered Emotion Intelligence
+            </div>
+
+            <h1>
+                Understand
+                <span>Human Emotions</span>
+                Through AI
+            </h1>
+
+            <p>
+                Analyze text and voice to identify emotions using a
+                simple, intelligent and interactive emotion detection system.
+            </p>
+
+            <a href="#analyzer" class="hero-button">
+                Start Analysis →
+            </a>
+
+        </div>
+
+        <div class="hero-card">
+
+            <div class="brain-icon">
+                🧠
+            </div>
+
+            <h3>Emotion Intelligence</h3>
+
+            <p>
+                Transform human communication into meaningful emotional insights.
+            </p>
+
+            <div class="emotion-preview">
+
+                <div>
+                    <span>😊</span>
+                    <small>Happy</small>
+                </div>
+
+                <div>
+                    <span>😢</span>
+                    <small>Sad</small>
+                </div>
+
+                <div>
+                    <span>😡</span>
+                    <small>Angry</small>
+                </div>
+
+                <div>
+                    <span>😐</span>
+                    <small>Neutral</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Analyzer Section -->
+    <section class="analyzer-section" id="analyzer">
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                EMOTION ANALYZER
+            </span>
+
+            <h2>
+                Analyze Your
+                <span>Text & Voice</span>
+            </h2>
+
+            <p>
+                Enter a message or use your microphone to discover
+                the emotional tone of the communication.
+            </p>
+
+        </div>
+
+
+        <div class="analyzer-container">
+
+            <!-- Text Analyzer -->
+            <div class="analyzer-card">
+
+                <div class="card-header">
+
+                    <div class="card-icon">
+                        📝
+                    </div>
+
+                    <div>
+                        <h3>Text Analysis</h3>
+                        <p>Analyze emotions from written text</p>
+                    </div>
+
+                </div>
+
+
+                <textarea
+                    id="textInput"
+                    placeholder="Type something here...
+
+Example:
+I am very happy today because I got selected for my dream job!"
+                ></textarea>
+
+
+                <div class="text-footer">
+
+                    <span id="charCount">
+                        0 characters
+                    </span>
+
+                    <button id="analyzeTextBtn" class="primary-button">
+                        Analyze Text
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Voice Analyzer -->
+            <div class="analyzer-card">
+
+                <div class="card-header">
+
+                    <div class="card-icon voice-icon">
+                        🎤
+                    </div>
+
+                    <div>
+                        <h3>Voice Analysis</h3>
+                        <p>Speak and convert your voice into text</p>
+                    </div>
+
+                </div>
+
+
+                <div class="voice-area">
+
+                    <div id="micCircle" class="mic-circle">
+                        🎤
+                    </div>
+
+                    <h3 id="voiceStatus">
+                        Click the microphone
+                    </h3>
+
+                    <p id="voiceText">
+                        Your spoken words will appear here.
+                    </p>
+
+                    <button id="micButton" class="mic-button">
+                        Start Recording
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Result -->
+        <div class="result-card" id="resultCard">
+
+            <div class="result-title">
+                <span>AI Analysis Result</span>
+                <span id="resultIcon">🧠</span>
+            </div>
+
+
+            <div class="main-result">
+
+                <div id="emotionEmoji" class="emotion-emoji">
+                    😐
+                </div>
+
+                <div>
+
+                    <p class="result-small">
+                        DETECTED EMOTION
+                    </p>
+
+                    <h2 id="emotionName">
+                        Waiting for analysis
+                    </h2>
+
+                    <p id="emotionDescription">
+                        Enter text or record your voice to detect an emotion.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="confidence-section">
+
+                <div class="confidence-header">
+
+                    <span>Confidence</span>
+
+                    <strong id="confidenceValue">
+                        0%
+                    </strong>
+
+                </div>
+
+                <div class="progress-bar">
+
+                    <div
+                        id="confidenceBar"
+                        class="progress"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Emotion Scores -->
+            <div class="emotion-scores">
+
+                <div class="score">
+
+                    <div class="score-top">
+                        <span>😊 Happy</span>
+                        <strong id="happyScore">0%</strong>
+                    </div>
+
+                    <div class="mini-progress">
+                        <div id="happyBar"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="score">
+
+                    <div class="score-top">
+                        <span>😢 Sad</span>
+                        <strong id="sadScore">0%</strong>
+                    </div>
+
+                    <div class="mini-progress">
+                        <div id="sadBar"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="score">
+
+                    <div class="score-top">
+                        <span>😡 Angry</span>
+                        <strong id="angryScore">0%</strong>
+                    </div>
+
+                    <div class="mini-progress">
+                        <div id="angryBar"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="score">
+
+                    <div class="score-top">
+                        <span>😨 Fear</span>
+                        <strong id="fearScore">0%</strong>
+                    </div>
+
+                    <div class="mini-progress">
+                        <div id="fearBar"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="score">
+
+                    <div class="score-top">
+                        <span>😮 Surprise</span>
+                        <strong id="surpriseScore">0%</strong>
+                    </div>
+
+                    <div class="mini-progress">
+                        <div id="surpriseBar"></div>
+                    </div>
+
+                </div>
+
+
+                <div class="score">
+
+                    <div class="score-top">
+                        <span>😐 Neutral</span>
+                        <strong id="neutralScore">0%</strong>
+                    </div>
+
+                    <div class="mini-progress">
+                        <div id="neutralBar"></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Features -->
+    <section class="features-section" id="features">
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                KEY FEATURES
+            </span>
+
+            <h2>
+                Powerful & Simple
+                <span>Emotion Analysis</span>
+            </h2>
+
+        </div>
+
+
+        <div class="features-grid">
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📝
+                </div>
+
+                <h3>Text Analysis</h3>
+
+                <p>
+                    Analyze written messages and identify the
+                    emotional tone of the text.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🎤
+                </div>
+
+                <h3>Voice Recognition</h3>
+
+                <p>
+                    Convert spoken words into text using
+                    browser speech recognition.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    🧠
+                </div>
+
+                <h3>AI Insights</h3>
+
+                <p>
+                    Detect common emotional categories and
+                    present them through visual insights.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon">
+                    📊
+                </div>
+
+                <h3>Confidence Score</h3>
+
+                <p>
+                    View emotion probabilities through
+                    interactive progress indicators.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- About -->
+    <section class="about-section" id="about">
+
+        <div class="about-content">
+
+            <span class="section-label">
+                ABOUT THE PROJECT
+            </span>
+
+            <h2>
+                Making Communication
+                <span>More Intelligent</span>
+            </h2>
+
+            <p>
+                The AI-Based Voice and Text Emotion Detection System
+                is designed to analyze human communication and identify
+                emotional patterns.
+            </p>
+
+            <p>
+                The system accepts written text or spoken input.
+                Voice input is converted into text and then analyzed
+                to identify the most likely emotion.
+            </p>
+
+            <div class="about-points">
+
+                <div>
+                    ✓ Easy to use
+                </div>
+
+                <div>
+                    ✓ Real-time interaction
+                </div>
+
+                <div>
+                    ✓ Responsive design
+                </div>
+
+                <div>
+                    ✓ Beginner-friendly implementation
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <div class="footer-logo">
+            Emotion<span>Sense</span>
+        </div>
+
+        <p>
+            AI-Based Voice and Text Emotion Detection System
+        </p>
+
+        <p class="copyright">
+            © 2026 EmotionSense. B.Tech Mini Project.
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
